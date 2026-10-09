@@ -109,6 +109,32 @@
   }
 
   journey.addEventListener("keydown", function (event) {
+    var activeControl = event.target.closest && event.target.closest("[data-journey-stop]");
+    if (activeControl) {
+      var isMapMarker = activeControl.classList.contains("journey-marker");
+      var stopGroup = controls.filter(function (control) {
+        return control.classList.contains("journey-marker") === isMapMarker;
+      });
+      var activeIndex = stopGroup.indexOf(activeControl);
+      var nextIndex = -1;
+
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+        nextIndex = (activeIndex + 1) % stopGroup.length;
+      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+        nextIndex = (activeIndex - 1 + stopGroup.length) % stopGroup.length;
+      } else if (event.key === "Home") {
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        nextIndex = stopGroup.length - 1;
+      }
+
+      if (activeIndex !== -1 && nextIndex !== -1) {
+        event.preventDefault();
+        stopGroup[nextIndex].focus();
+        return;
+      }
+    }
+
     if (event.key === "Escape" && popup && !popup.hidden) {
       resetMap(document.activeElement === resetButton);
     }
