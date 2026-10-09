@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="{{ '/' | relative_url }}" aria-label="Vivian Que Lam home">
+      <span class="wordmark-mark" aria-hidden="true">V</span>
+      <span>Vivian Que Lam</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      {% assign navigation = "About|/about/,Work|/work/,Contact|/contact/" | split: "," %}
+      {% for item in navigation %}
+        {% assign nav_parts = item | split: "|" %}
+        <a href="{{ nav_parts[1] | relative_url }}"{% if page.url == nav_parts[1] %} aria-current="page"{% endif %}>{{ nav_parts[0] }}</a>
+      {% endfor %}
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false">
+      <span class="theme-icon theme-icon-sun" aria-hidden="true">☼</span>
+      <span class="theme-icon theme-icon-moon" aria-hidden="true">◐</span>
+      <span class="theme-toggle-label">Theme</span>
+    </button>
+  </div>
+</header>
