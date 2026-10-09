@@ -1,0 +1,25 @@
+title: Vivian Que Lam
+description: Strategy-minded operator and MBA candidate at UC Berkeley Haas, pivoting from B2B sales into strategy.
+url: "https://vivianqlam.github.io"
+baseurl: ""
+repository: vivianqlam/vivianqlam.github.io
+github_username: vivianqlam
+lang: en-US
+timezone: America/Los_Angeles
+markdown: kramdown
+permalink: pretty
+sass:
+  style: compressed
+exclude:
+  - README.md
+  - PLAN.md
+  - replit.md
+  - .replit
+  - .replitignore
+  - .conversation
+  - .local
+  - .agents
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
